@@ -1,0 +1,23 @@
+[
+  {
+    "name": "张三",
+    "exam_id": "135027015401",
+    "level": "CET4",
+    "examDate": "2023-06-12",
+    "score": 480
+  },
+  {
+    "name": "李四",
+    "exam_id": "135027015402",
+    "level": "CET6",
+    "examDate": "2023-12-12",
+    "score": 420
+  },
+  {
+    "name": "王五",
+    "exam_id": "135027015403",
+    "level": "CET4",
+    "examDate": "2023-06-12",
+    "score": 410
+  }
+]

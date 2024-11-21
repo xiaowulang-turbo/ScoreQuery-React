@@ -1,0 +1,62 @@
+[
+  {
+    "exam_id": 135027015401,
+    "name": "张三",
+    "password": "password1",
+    "role": "student",
+    "birthDate": "2000-01-01",
+    "age": 24,
+    "gender": "male",
+    "registerDate": "2020-01-01",
+    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "phone": "12345678901"
+  },
+  {
+    "exam_id": 135027015402,
+    "name": "李四",
+    "password": "password2",
+    "role": "teacher",
+    "birthDate": "1990-01-01",
+    "age": 34,
+    "gender": "female",
+    "registerDate": "2019-01-01",
+    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "phone": "12345678902"
+  },
+  {
+    "exam_id": 135027015403,
+    "name": "王五",
+    "password": "password3",
+    "role": "admin",
+    "birthDate": "1980-01-01",
+    "age": 44,
+    "gender": "male",
+    "registerDate": "2018-01-01",
+    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "phone": "12345678903"
+  },
+  {
+    "exam_id": 135027015404,
+    "name": "赵六",
+    "password": "password4",
+    "role": "student",
+    "birthDate": "1995-01-01",
+    "age": 29,
+    "gender": "female",
+    "registerDate": "2017-01-01",
+    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "phone": "12345678904"
+  },
+  {
+    "exam_id": 135027015405,
+    "name": "钱七",
+    "password": "password5",
+    "role": "student",
+    "birthDate": "1998-01-01",
+    "age": 26,
+    "gender": "male",
+    "registerDate": "2016-01-01",
+    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "phone": "12345678905"
+  }
+]
