@@ -40,7 +40,7 @@ const AppRoutes = () => {
             isStudent() ? (
               <Navigate to="/query" />
             ) : isAuthenticated() ? (
-              <Navigate to={'/table/'} />
+              <Navigate to={'/table/welcome'} />
             ) : (
               <Login />
             )
@@ -57,7 +57,7 @@ const AppRoutes = () => {
           <Route path="grade" element={<Grade />} />
           <Route path="user" element={<User />} />
           <Route path="welcome" element={<Welcome />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<Welcome />} />
         </Route>
 
         {/* 未匹配路由 */}
