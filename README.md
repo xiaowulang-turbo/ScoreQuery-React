@@ -10,3 +10,4 @@
 - 电脑上需提前安装好 moogooseDB
 - vscode 上需提前安装好 nodejs
 - 原始数据位于`./server/data`目录下，可自行导入 mongooseDB 中
+- 可 fork 项目，或直接打包下载
