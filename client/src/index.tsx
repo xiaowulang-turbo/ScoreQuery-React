@@ -6,16 +6,18 @@ import { BrowserRouter } from 'react-router-dom';
 import './i18n';
 import Table from './table';
 import './index.css';
+import AppRoutes from './routes';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 root.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <Table />
-    </BrowserRouter>
-  </Provider>
+  <AppRoutes />
+  // <Provider store={store}>
+  //   <BrowserRouter>
+  //     <Table />
+  //   </BrowserRouter>
+  // </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
