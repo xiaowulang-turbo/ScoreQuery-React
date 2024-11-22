@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, Outlet } from 'react-router-dom';
 import {
-  BarChartOutlined,
-  TagsOutlined,
+  UserOutlined,
+  HomeOutlined,
   SettingOutlined,
   BookOutlined,
 } from '@ant-design/icons';
@@ -37,11 +37,13 @@ const Table: React.FC = () => {
 
   const getMenuSelectedKeys = () => {
     const paths = location.pathname.split('/').filter(Boolean);
+    console.log(paths);
     let currentPath = paths.join('-');
+    console.log(currentPath);
     if (!currentPath) currentPath = '1';
-    else if (currentPath === 'notes') currentPath = '1';
-    else if (currentPath === 'contents') currentPath = '2';
-    else if (currentPath === 'tags') currentPath = '3';
+    else if (currentPath.includes('welcome')) currentPath = '1';
+    else if (currentPath.includes('grade')) currentPath = '2';
+    else if (currentPath.includes('user')) currentPath = '3';
     else currentPath = '1';
     return [currentPath];
   };
@@ -61,7 +63,7 @@ const Table: React.FC = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ lang: lang === 'zh' ? 'en' : 'zh' }),
     }).then(res => {
-      getLang();
+      // getLang();
     });
   };
 
@@ -72,7 +74,12 @@ const Table: React.FC = () => {
         localStorage.setItem('lang', data.data);
       });
   };
-  keepLang();
+  // keepLang();
+
+  const onLogOut = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/login';
+  };
 
   return (
     <Layout>
@@ -85,27 +92,24 @@ const Table: React.FC = () => {
           fontSize: '24px',
         }}
       >
-        <h3>{t('Header Title')}</h3>
+        <h3
+          onClick={() => {
+            window.location.href = '/table/welcome';
+          }}
+          style={{
+            cursor: 'pointer',
+          }}
+        >
+          {t('四六级考试管理平台')}
+        </h3>
         <Popover
-          trigger="click"
           content={
-            <Switch
-              checkedChildren="中文"
-              unCheckedChildren="EN"
-              onClick={() => toggleLang()}
-            ></Switch>
+            <Button type="primary" onClick={onLogOut}>
+              {t('退出系统')}
+            </Button>
           }
         >
-          <Flex gap={5}>
-            <ConfigProvider wave={{ disabled: true }}>
-              <Button
-                icon={<SettingOutlined />}
-                style={{ background: 'none', border: 'none', color: '#fff' }}
-              >
-                {t('Setting')}
-              </Button>
-            </ConfigProvider>
-          </Flex>
+          <UserOutlined />
         </Popover>
       </Header>
       <Layout>
@@ -117,19 +121,19 @@ const Table: React.FC = () => {
             style={{ height: '100%', borderRight: 0 }}
             items={[
               {
-                icon: <BookOutlined />,
+                icon: <HomeOutlined />,
                 key: 1,
-                label: <Link to="/notes">{t('Menu Item Notes')}</Link>,
+                label: <Link to="/table/welcome">{t('首页')}</Link>,
               },
               {
-                icon: <BarChartOutlined />,
+                icon: <BookOutlined />,
                 key: 2,
-                label: <Link to="/contents">{t('Menu Item Content')}</Link>,
+                label: <Link to="/table/grade">{t('成绩管理')}</Link>,
               },
               {
-                icon: <TagsOutlined />,
+                icon: <UserOutlined />,
                 key: 3,
-                label: <Link to="/tags">{t('Menu Item Tags')}</Link>,
+                label: <Link to="/table/user">{t('用户管理')}</Link>,
               },
             ]}
           />
@@ -145,13 +149,14 @@ const Table: React.FC = () => {
             }}
           >
             <ConfigProvider locale={lang === 'zh' ? zhCN : enUS}>
-              <Routes>
+              {/* <Routes>
                 <Route path="/index.html" Component={studyNotes} />
                 <Route path="/" Component={studyNotes} />
                 <Route path="/notes" Component={studyNotes} />
                 <Route path="/contents" Component={Contents} />
                 <Route path="/tags" Component={Tags} />
-              </Routes>
+              </Routes> */}
+              <Outlet />
             </ConfigProvider>
           </Content>
         </Layout>
