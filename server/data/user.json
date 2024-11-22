@@ -58,5 +58,21 @@
     "registerDate": "2016-01-01",
     "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
     "phone": "12345678905"
+  },
+  {
+    "exam_id": "admin",
+    "password": "admin",
+    "role": "admin",
+    "name": "admin",
+    "age": "38",
+    "gender": "male",
+    "registerDate": {
+      "$date": "2024-11-21T12:54:33.945Z"
+    },
+    "birthDate": {
+      "$date": "1986-02-04T16:00:00.000Z"
+    },
+    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "phone": "12345"
   }
 ]
