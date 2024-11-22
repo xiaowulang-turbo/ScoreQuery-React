@@ -1,45 +1,34 @@
 const Koa = require('koa');
-const { koaBody } = require('koa-body');
-// const bodyParser = require('koa-bodyparser');
-const serve = require('koa-static');
+const Router = require('koa-router');
+const bodyParser = require('koa-bodyparser');
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/auth');
+const cors = require('@koa/cors'); // 引入 CORS 中间件
 
-const routes = require('./router');
+require('dotenv').config();
 
 const app = new Koa();
+const router = new Router();
 
-// 全局异常处理
-process.on('uncaughtException', (err, origin) => {
-  console.log(`Caught exception: ${err}\n` + `Exception origin: ${origin}`);
-});
-
-// 静态资源目录，
-app.use(serve('../client/build'));
 app.use(
-  koaBody({ parsedMethods: ['POST', 'PUT', 'PATCH', 'GET', 'HEAD', 'DELETE'] })
+  cors({
+    origin: 'http://localhost:3000', // 允许的前端地址
+    credentials: true, // 是否允许发送 Cookie
+  })
 );
 
-// 统一接口错误处理
-app.use(async (ctx, next) => {
-  try {
-    // ctx.body = ctx.request.body;
-    await next();
-    if (ctx.response.status === 404 && !ctx.response.body) {
-      ctx.throw(404);
-    }
-  } catch (error) {
-    const { url = '' } = ctx.request;
-    const { status = 500, message } = error;
-    if (url.startsWith('/api')) {
-      ctx.status = typeof status === 'number' ? status : 500;
-      ctx.body = {
-        msg: message,
-      };
-    }
-  }
-});
-// 加载数据路由
-app.use(routes.routes());
+// 中间件
+app.use(bodyParser());
 
-app.listen(3001, () => {
-  console.log('Server is running on http://localhost:3001');
+// 数据库连接
+connectDB();
+
+// 路由
+router.use('/auth', authRoutes.routes());
+app.use(router.routes()).use(router.allowedMethods());
+
+// 启动服务器
+const PORT = process.env.PORT || 3010;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
