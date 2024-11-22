@@ -35,33 +35,34 @@ const Grades = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigate = useNavigate();
   const [form] = Form.useForm();
+  const [form2] = Form.useForm();
+
+  const [isModalVisible2, setIsModalVisible2] = useState(false);
 
   useEffect(() => {
     // 拉取学生成绩信息
-    const fetchGrades = async () => {
-      try {
-        const response = await fetch('http://localhost:3010/auth/grade');
-        if (!response.ok) {
-          throw new Error('无法获取成绩信息，请稍后再试');
-        }
-        console.log(response);
-        const data = await response.json();
-        console.log(data);
-        setGrades(
-          data.map((grade: any) => ({
-            ...grade,
-            isPassed: grade.score > 425,
-          }))
-        );
-        setLoading(false);
-      } catch (error) {
-        message.error('无法获取成绩信息，请稍后再试');
-        setLoading(false);
-      }
-    };
-
     fetchGrades();
   }, []);
+
+  const fetchGrades = async () => {
+    try {
+      const response = await fetch('http://localhost:3010/auth/grade');
+      if (!response.ok) {
+        throw new Error('无法获取成绩信息，请稍后再试');
+      }
+      const data = await response.json();
+      setGrades(
+        data.map((grade: any) => ({
+          ...grade,
+          isPassed: grade.score > 425,
+        }))
+      );
+      setLoading(false);
+    } catch (error) {
+      message.error('无法获取成绩信息，请稍后再试');
+      setLoading(false);
+    }
+  };
 
   const handleEdit = (record: Grade) => {
     setEditingGrade(record);
@@ -110,6 +111,43 @@ const Grades = () => {
       // 重新拉取成绩信息
     } catch (error) {
       message.error('无法更新成绩信息，请稍后再试');
+    }
+  };
+
+  const showModal = () => {
+    setIsModalVisible2(true);
+  };
+
+  const handleCancel2 = () => {
+    setIsModalVisible2(false);
+  };
+
+  const handleOk2 = async () => {
+    try {
+      const values = await form2.validateFields();
+
+      const response = await fetch('http://localhost:3010/auth/grade', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+      if (!response.ok) {
+        throw new Error('无法添加成绩信息，请稍后再试');
+      }
+
+      const newGrade = await response.json();
+      setGrades(prev => [...prev, newGrade]);
+
+      message.success('成绩信息添加成功');
+      setIsModalVisible2(false);
+      form.resetFields();
+
+      // 重新拉取成绩信息
+      fetchGrades();
+    } catch (error) {
+      message.error('无法添加成绩信息，请稍后再试');
     }
   };
 
@@ -173,8 +211,22 @@ const Grades = () => {
   ];
 
   return (
-    <div style={{ padding: '20px' }}>
-      <Card title="学生成绩管理" bordered={false}>
+    <div
+      style={{
+        padding: '20px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Card
+        title="学生成绩管理"
+        bordered={false}
+        style={{
+          width: '100%',
+        }}
+      >
         <Table
           dataSource={grades}
           columns={columns}
@@ -202,7 +254,37 @@ const Grades = () => {
             </Form.Item>
           </Form>
         </Modal>
+        <Modal
+          title="新建成绩"
+          open={isModalVisible2}
+          onCancel={handleCancel2}
+          onOk={handleOk2}
+        >
+          <Form form={form2} layout="vertical">
+            <Form.Item label="学生姓名" name="name">
+              <Input />
+            </Form.Item>
+            <Form.Item label="考生号" name="exam_id">
+              <Input />
+            </Form.Item>
+            <Form.Item label="考试时间" name="examDate">
+              <DatePicker />
+            </Form.Item>
+            <Form.Item label="考试级别" name="level">
+              <Select>
+                <Select.Option value="CET4">四级</Select.Option>
+                <Select.Option value="CET6">六级</Select.Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label="考试成绩" name="score">
+              <InputNumber />
+            </Form.Item>
+          </Form>
+        </Modal>
       </Card>
+      <Button type="primary" onClick={showModal} style={{ marginTop: 16 }}>
+        新建成绩
+      </Button>
     </div>
   );
 };
