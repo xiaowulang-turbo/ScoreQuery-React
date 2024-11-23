@@ -37,6 +37,7 @@ const Welcome: React.FC = () => {
     '头像上传',
     '国际化支持',
     '管理员权限划分',
+    '删除用户',
   ]);
   const [newTodo, setNewTodo] = useState('');
 
