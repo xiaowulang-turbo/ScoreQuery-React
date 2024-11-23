@@ -96,7 +96,7 @@ const Query: React.FC = () => {
           right: '50px',
         }}
       />
-      <h1>四六级考试成绩查询系统</h1>
+      <h1>四六级查分平台</h1>
 
       <Input
         placeholder="请输入考生号"
