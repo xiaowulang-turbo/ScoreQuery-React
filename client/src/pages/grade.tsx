@@ -294,11 +294,26 @@ const Grades = () => {
           onCancel={handleCancel2}
           onOk={handleOk2}
         >
-          <Form form={form2} layout="vertical">
-            <Form.Item label="学生姓名" name="name">
-              <Input />
+          <Form
+            form={form2}
+            layout="vertical"
+            initialValues={{
+              examDate: dayjs(new Date()),
+              level: 'CET4',
+            }}
+          >
+            <Form.Item
+              label="学生姓名"
+              name="name"
+              rules={[{ required: true, message: '请输入学生姓名' }]}
+            >
+              <Input required />
             </Form.Item>
-            <Form.Item label="考生号" name="exam_id">
+            <Form.Item
+              label="考生号"
+              name="exam_id"
+              rules={[{ required: true, message: '请输入考生号' }]}
+            >
               <Input />
             </Form.Item>
             <Form.Item label="考试时间" name="examDate">
@@ -310,7 +325,19 @@ const Grades = () => {
                 <Select.Option value="CET6">六级</Select.Option>
               </Select>
             </Form.Item>
-            <Form.Item label="考试成绩" name="score">
+            <Form.Item
+              label="考试成绩"
+              name="score"
+              rules={[
+                {
+                  required: true,
+                  message: '请输入正确的考试成绩',
+                  type: 'number',
+                  min: 0,
+                  max: 710,
+                },
+              ]}
+            >
               <InputNumber />
             </Form.Item>
           </Form>
