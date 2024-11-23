@@ -100,7 +100,7 @@ const Table: React.FC = () => {
             cursor: 'pointer',
           }}
         >
-          {t('四六级考试管理平台')}
+          {t('四六级查分平台')}
         </h3>
         <Popover
           content={
