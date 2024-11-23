@@ -132,6 +132,24 @@ router.put('/grade/:_id', async ctx => {
   }
 });
 
+// 删除成绩接口
+router.delete('/grade/:_id', async ctx => {
+  try {
+    const _id = ctx.params._id;
+    const deletedUser = await Grade.findByIdAndDelete(_id);
+    if (!deletedUser) {
+      ctx.status = 404;
+      ctx.body = { message: '用户不存在' };
+      return;
+    }
+    ctx.status = 200;
+    ctx.body = { message: '删除成功' };
+  } catch (error) {
+    ctx.status = 500;
+    ctx.body = { message: '删除失败', error };
+  }
+});
+
 router.get('/users', async ctx => {
   try {
     const users = await Score.find();
