@@ -13,6 +13,8 @@ import {
   DatePicker,
   InputNumber,
   Switch,
+  Popover,
+  Popconfirm,
 } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useNavigate } from 'react-router-dom';
@@ -151,6 +153,23 @@ const Grades = () => {
     }
   };
 
+  const handleDelete = async (_id: string) => {
+    try {
+      const response = await fetch(`http://localhost:3010/auth/grade/${_id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('无法删除成绩信息，请稍后再试');
+      }
+      setGrades(prev => prev.filter(grade => grade._id !== _id));
+
+      message.success('成绩信息删除成功');
+    } catch (error) {
+      message.error('无法删除成绩信息，请稍后再试');
+    }
+  };
+
   const columns: ColumnsType<Grade> = [
     {
       title: '序号',
@@ -199,13 +218,28 @@ const Grades = () => {
       title: '操作',
       key: 'action',
       render: (_, record) => (
-        <Button
-          type="primary"
-          // disabled={role !== 'admin'}
-          onClick={() => handleEdit(record)}
-        >
-          编辑
-        </Button>
+        <>
+          <Button
+            type="primary"
+            // disabled={role !== 'admin'}
+            onClick={() => handleEdit(record)}
+          >
+            编辑
+          </Button>
+          {'   '}
+          <Popconfirm
+            title="确定要删除该成绩吗？"
+            onConfirm={() => handleDelete(record._id)}
+          >
+            <Button
+              color="red"
+              // type="primary"
+              // onClick={() => handleDelete(record._id)}
+            >
+              删除
+            </Button>
+          </Popconfirm>
+        </>
       ),
     },
   ];
