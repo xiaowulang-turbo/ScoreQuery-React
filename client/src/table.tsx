@@ -16,8 +16,6 @@ import {
   Switch,
   theme,
 } from 'antd';
-import Tags from './tags';
-import Contents from './contents';
 import { useTranslation } from 'react-i18next';
 import zhCN from 'antd/lib/locale/zh_CN';
 import enUS from 'antd/lib/locale/en_US';
