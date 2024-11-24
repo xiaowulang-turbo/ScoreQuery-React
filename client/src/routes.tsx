@@ -16,6 +16,7 @@ import User from './pages/user';
 import Query from './pages/query';
 import Welcome from './pages/welcome';
 import NotFound from './pages/notFound';
+import CalendarComponent from './pages/CalendarComponent';
 
 const AppRoutes = () => {
   const role = localStorage.getItem('token');
@@ -48,6 +49,7 @@ const AppRoutes = () => {
         />
 
         <Route path="/query" element={<Query />} />
+        <Route path="/calendar" element={<CalendarComponent />} />
 
         {/* 主页路由嵌套 */}
         <Route
