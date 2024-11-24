@@ -99,7 +99,7 @@ const Welcome: React.FC = () => {
         <Col xs={24} md={12} lg={8}>
           <Card bordered hoverable>
             <Avatar
-              src={user?.avatar || 'https://example.com/default-avatar.png'}
+              src={user?.avatar || 'https://www.loliapi.com/acg/pp/'}
               size={80}
               icon={<UserOutlined />}
               style={{ marginBottom: '20px' }}

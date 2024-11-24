@@ -53,7 +53,7 @@ const Query: React.FC = () => {
       const data = await grade.json();
       const formattedData = {
         exam_id: data.exam_id,
-        avatar: data.avatar || 'https://example.com/default-avatar.png',
+        avatar: data.avatar || 'https://www.loliapi.com/acg/pp/',
         examDate: data.examDate,
         level: data.level,
         score: data.score,
@@ -99,6 +99,7 @@ const Query: React.FC = () => {
       <h1>四六级查分平台</h1>
 
       <Input
+        addonBefore="考生号"
         placeholder="请输入考生号"
         value={exam_id}
         onChange={e => setExamId(e.target.value)}
