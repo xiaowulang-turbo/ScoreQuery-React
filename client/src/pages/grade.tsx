@@ -236,7 +236,8 @@ const Grades = () => {
             onConfirm={() => handleDelete(record._id)}
           >
             <Button
-              color="red"
+              color="danger"
+              variant="solid"
               // type="primary"
               // onClick={() => handleDelete(record._id)}
             >
