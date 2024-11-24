@@ -50,10 +50,10 @@ const LoginRegisterPage: React.FC = () => {
         window.location.href = '/query';
       }
     } else {
-      message.success('注册成功');
       form.resetFields();
       window.location.href = '/login';
       setIsLogin(true);
+      message.success('注册成功');
     }
     // TODO: handle login/register
   };
