@@ -160,7 +160,11 @@ const UserManagement: React.FC = () => {
       title: '操作',
       key: 'action',
       render: (_: any, record: User) => (
-        <Button icon={<EditOutlined />} onClick={() => onEdit(record)}>
+        <Button
+          type="primary"
+          icon={<EditOutlined />}
+          onClick={() => onEdit(record)}
+        >
           编辑
         </Button>
       ),
