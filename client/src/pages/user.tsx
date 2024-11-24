@@ -178,11 +178,7 @@ const UserManagement: React.FC = () => {
           onOk={onSubmit}
         >
           <Form form={form} layout="vertical">
-            <Form.Item
-              name="name"
-              label="姓名"
-              rules={[{ required: true, message: '请输入姓名' }]}
-            >
+            <Form.Item name="name" label="姓名">
               <Input />
             </Form.Item>
             <Form.Item name="role" label="身份">

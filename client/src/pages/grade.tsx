@@ -307,7 +307,7 @@ const Grades = () => {
               name="name"
               rules={[{ required: true, message: '请输入学生姓名' }]}
             >
-              <Input required />
+              <Input />
             </Form.Item>
             <Form.Item
               label="考生号"
