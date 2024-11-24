@@ -8,7 +8,7 @@
     "age": 24,
     "gender": "male",
     "registerDate": "2020-01-01",
-    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "avatar": "https://www.loliapi.com/acg/pp/",
     "phone": "12345678901"
   },
   {
@@ -20,7 +20,7 @@
     "age": 34,
     "gender": "female",
     "registerDate": "2019-01-01",
-    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "avatar": "https://www.loliapi.com/acg/pp/",
     "phone": "12345678902"
   },
   {
@@ -32,7 +32,7 @@
     "age": 44,
     "gender": "male",
     "registerDate": "2018-01-01",
-    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "avatar": "https://www.loliapi.com/acg/pp/",
     "phone": "12345678903"
   },
   {
@@ -44,7 +44,7 @@
     "age": 29,
     "gender": "female",
     "registerDate": "2017-01-01",
-    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "avatar": "https://www.loliapi.com/acg/pp/",
     "phone": "12345678904"
   },
   {
@@ -56,8 +56,20 @@
     "age": 26,
     "gender": "male",
     "registerDate": "2016-01-01",
-    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "avatar": "https://www.loliapi.com/acg/pp/",
     "phone": "12345678905"
+  },
+  {
+    "exam_id": 135027015406,
+    "name": "孙八",
+    "password": "password6",
+    "role": "teacher",
+    "birthDate": "1985-01-01",
+    "age": 39,
+    "gender": "female",
+    "registerDate": "2015-01-01",
+    "avatar": "https://www.loliapi.com/acg/pp/",
+    "phone": "12345678906"
   },
   {
     "exam_id": "admin",
@@ -72,7 +84,7 @@
     "birthDate": {
       "$date": "1986-02-04T16:00:00.000Z"
     },
-    "avatar": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    "avatar": "https://www.loliapi.com/acg/pp/",
     "phone": "12345"
   }
 ]

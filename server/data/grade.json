@@ -19,5 +19,26 @@
     "level": "CET4",
     "examDate": "2023-06-12",
     "score": 410
+  },
+  {
+    "name": "赵六",
+    "exam_id": "135027015404",
+    "level": "CET6",
+    "examDate": "2023-12-12",
+    "score": 490
+  },
+  {
+    "name": "钱七",
+    "exam_id": "135027015405",
+    "level": "CET4",
+    "examDate": "2023-06-12",
+    "score": 460
+  },
+  {
+    "name": "孙八",
+    "exam_id": "135027015406",
+    "level": "CET6",
+    "examDate": "2023-12-12",
+    "score": 470
   }
 ]
