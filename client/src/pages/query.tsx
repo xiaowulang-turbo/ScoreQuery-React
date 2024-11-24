@@ -27,6 +27,7 @@ const Query: React.FC = () => {
   const [exam_id, setExamId] = useState('');
 
   const queryGrade = async () => {
+    setGrade(undefined);
     // 获取成绩信息
 
     try {
