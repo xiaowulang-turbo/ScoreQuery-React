@@ -111,7 +111,11 @@ const Table: React.FC = () => {
         </Popover>
       </Header>
       <Layout>
-        <Sider collapsible={true} style={{ background: colorBgContainer }}>
+        <Sider
+          collapsible={true}
+          defaultCollapsed
+          style={{ background: colorBgContainer }}
+        >
           <Menu
             mode="inline"
             defaultSelectedKeys={['1']}
