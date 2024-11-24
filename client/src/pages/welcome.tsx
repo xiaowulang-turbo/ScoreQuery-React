@@ -10,6 +10,7 @@ import {
   Input,
   Button,
   message,
+  Calendar,
 } from 'antd';
 import {
   UserOutlined,
@@ -86,17 +87,10 @@ const Welcome: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        padding: '20px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Row gutter={[16, 16]} style={{ width: '100%', maxWidth: '1200px' }}>
+    <div>
+      <Row gutter={[16, 16]} style={{ width: '100%' }}>
         {/* 用户信息卡片 */}
-        <Col xs={24} md={12} lg={8}>
+        <Col span={12} xs={12} md={12}>
           <Card bordered hoverable>
             <Avatar
               src={user?.avatar || 'https://www.loliapi.com/acg/pp/'}
@@ -115,24 +109,8 @@ const Welcome: React.FC = () => {
             </Title>
           </Card>
         </Col>
-
-        {/* 每日一句 */}
-        <Col xs={24} md={12} lg={8}>
-          <Card bordered hoverable>
-            <SmileOutlined
-              style={{
-                fontSize: '24px',
-                marginBottom: '10px',
-                color: '#52c41a',
-              }}
-            />
-            <Title level={4}>每日一句</Title>
-            <Text>"{quote}"</Text>
-          </Card>
-        </Col>
-
         {/* 待办事项 */}
-        <Col xs={24} lg={8}>
+        <Col span={12} xs={12}>
           <Card bordered hoverable>
             <Title level={4}>待办事项</Title>
             <List
@@ -163,6 +141,27 @@ const Welcome: React.FC = () => {
                 添加
               </Button>
             </div>
+          </Card>
+        </Col>
+        {/* 每日一句 */}
+      </Row>
+      <Row gutter={[16, 16]} style={{ width: '100%' }}>
+        <Col span={12}>
+          <Card>
+            <Calendar fullscreen={false} />
+          </Card>
+        </Col>
+        <Col span={12}>
+          <Card bordered hoverable>
+            <SmileOutlined
+              style={{
+                fontSize: '24px',
+                marginBottom: '10px',
+                color: '#52c41a',
+              }}
+            />
+            <Title level={4}>每日一句</Title>
+            <Text>"{quote}"</Text>
           </Card>
         </Col>
       </Row>
