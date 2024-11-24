@@ -53,6 +53,7 @@ const Grades = () => {
         throw new Error('无法获取成绩信息，请稍后再试');
       }
       const data = await response.json();
+      console.log(data);
       setGrades(
         data.map((grade: any) => ({
           ...grade,
@@ -101,7 +102,12 @@ const Grades = () => {
       const updatedGrade = await response.json();
       setGrades(prev =>
         prev.map(grade =>
-          grade._id === updatedGrade._id ? updatedGrade : grade
+          grade._id === updatedGrade._id
+            ? {
+                ...updatedGrade,
+                isPassed: updatedGrade.score > 425,
+              }
+            : grade
         )
       );
 
@@ -109,8 +115,6 @@ const Grades = () => {
       setIsModalVisible(false);
       setEditingGrade(null);
       form.resetFields();
-
-      // 重新拉取成绩信息
     } catch (error) {
       message.error('无法更新成绩信息，请稍后再试');
     }
@@ -289,7 +293,7 @@ const Grades = () => {
           </Form>
         </Modal>
         <Modal
-          title="新建成绩"
+          title="添加成绩"
           open={isModalVisible2}
           onCancel={handleCancel2}
           onOk={handleOk2}
@@ -344,7 +348,7 @@ const Grades = () => {
         </Modal>
       </Card>
       <Button type="primary" onClick={showModal} style={{ marginTop: 16 }}>
-        新建成绩
+        添加成绩
       </Button>
     </div>
   );
