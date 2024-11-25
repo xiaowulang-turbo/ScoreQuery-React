@@ -97,7 +97,7 @@ const Query: React.FC = () => {
           right: '50px',
         }}
       />
-      <h1>四六级查分平台</h1>
+      <h1>四六级查分系统</h1>
 
       <Input
         addonBefore="考生号"

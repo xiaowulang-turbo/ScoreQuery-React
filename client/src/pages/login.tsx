@@ -68,7 +68,7 @@ const LoginRegisterPage: React.FC = () => {
       }}
     >
       <Card style={{ width: 300 }}>
-        <h2>四六级查分平台-{isLogin ? '登录' : '注册'}</h2>
+        <h2>四六级查分系统-{isLogin ? '登录' : '注册'}</h2>
         <Form
           form={form}
           name={isLogin ? 'login' : 'register'}
